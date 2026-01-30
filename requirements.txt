@@ -1,0 +1,5 @@
+# SSH Brute Force Detector - Dependencies
+# Python 3.10+ recommended. No heavy frameworks; stdlib-only for clarity.
+# Uncomment below if you add optional features (e.g. ipaddress for full CIDR).
+
+# ipaddress  # stdlib in Python 3.3+; use if you extend whitelist CIDR logic

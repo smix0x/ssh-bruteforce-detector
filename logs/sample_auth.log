@@ -1,0 +1,9 @@
+Jan 30 10:14:00 server sshd[1234]: Failed password for invalid user root from 203.0.113.50 port 22 ssh2
+Jan 30 10:14:02 server sshd[1234]: Failed password for invalid user admin from 203.0.113.50 port 22 ssh2
+Jan 30 10:14:05 server sshd[1234]: Failed password for invalid user test from 203.0.113.50 port 22 ssh2
+Jan 30 10:14:08 server sshd[1234]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 10:14:12 server sshd[1234]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 10:14:15 server sshd[1234]: Failed password for ubuntu from 203.0.113.50 port 22 ssh2
+Jan 30 10:15:00 server sshd[1234]: Accepted password for admin from 192.168.1.50 port 22 ssh2
+Jan 30 10:16:00 server sshd[1234]: Failed password for invalid user guest from 10.0.0.99 port 22 ssh2
+Jan 30 10:16:01 server sshd[1234]: Failed password for invalid user guest from 10.0.0.99 port 22 ssh2
