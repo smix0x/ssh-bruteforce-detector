@@ -1,6 +1,6 @@
 # SSH Brute Force Detector
 
-**Blue Team / SOC educational project** — Detect SSH brute force attacks via log analysis, with multi-stage response (alert → rate-limit simulation → firewall block). Production-like structure, beginner-friendly code, and interview-ready explanations.
+**Blue Team / SOC educational project** — Detect SSH brute force attacks via log analysis, with multi-stage response (alert → rate-limit simulation → firewall block). Production-inspired structure, beginner-friendly implementation, and interview-ready explanations
 
 ---
 
@@ -9,6 +9,17 @@
 This project analyzes SSH authentication logs (e.g. `auth.log`, `secure`) to detect **brute force attacks**: many failed login attempts from the same IP in a short time. It then applies a **multi-stage response**: log and alert first, optionally simulate rate-limiting, and optionally block the IP at the firewall — with **DRY-RUN mode on by default** so you can learn and test safely.
 
 **Target audience:** Network & Security students, SOC analyst candidates, and anyone learning Blue Team fundamentals (log analysis, detection thresholds, incident response, automation).
+
+---
+
+## Skills Demonstrated
+
+- Linux log analysis (auth.log / secure)
+- SSH attack pattern recognition
+- Brute force detection logic (threshold + time window)
+- Python scripting for security automation
+- Incident response workflow (detect → alert → respond)
+- Safe defensive automation (dry-run, whitelist)
 
 ---
 
@@ -39,7 +50,7 @@ This project implements that idea with configurable threshold and window, plus w
 - **Count:** For each **source IP**, we count only **failed** attempts (wrong password or “invalid user”).
 - **Threshold:** Default **5 failed attempts** within **10 minutes** (configurable in `detector/config.py`).
 - **Malicious IP:** Any IP that meets or exceeds the threshold within that window.
-- **Why this works:** Legitimate users rarely fail 5+ times in 10 minutes; bots do.
+- **Why this works:** Legitimate users rarely fail authentication repeatedly from the same source IP in a short window.
 - **False positive reduction:**  
   - Only failed/invalid attempts count (successes are ignored).  
   - Time window keeps one bad day from looking like one “burst.”  
@@ -86,6 +97,9 @@ This format is **SIEM-friendly** (easy to ingest and correlate).
   - **DRY_RUN = False:** On Linux, we try **iptables** first (e.g. `iptables -I INPUT 1 -s \<IP\> -j DROP`), then **ufw** if iptables isn’t used.
 - **Whitelist:** Whitelisted IPs are never blocked (handled before firewall logic).
 - **Auto-unblock:** Config has `BLOCK_DURATION_SECONDS` (e.g. 24h); the current code focuses on block logic; a cron or timer could later call an unblock function.
+  
+  ⚠️ Blocking is intentionally disabled by default to prevent accidental lockout during learning or testing.
+
 
 ---
 
@@ -176,6 +190,15 @@ ssh-bruteforce-detector/
 ├── requirements.txt
 └── LICENSE (MIT)
 ```
+---
+
+## Interview Talking Points
+
+- Why threshold-based detection works for brute force attacks
+- How false positives are reduced using time windows and whitelisting
+- Difference between detection logic and response automation
+- Why dry-run mode is critical in security tooling
+- When to use a custom script vs Fail2Ban in real environments
 
 ---
 
