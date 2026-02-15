@@ -1,7 +1,7 @@
 # SSH Brute Force Detector
 
 **Blue Team / SOC educational project** — Detect SSH brute force attacks via log analysis, with multi-stage response (alert → rate-limit simulation → firewall block). Production-inspired structure, beginner-friendly implementation, and interview-ready explanations .
-
+.
 ---
 
 ## Project Overview
